@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DependencyTest {
+public class DependencyTest extends BaseTest{
 
     @Test
     public void stepb() {
