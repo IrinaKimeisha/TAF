@@ -2,7 +2,9 @@ import org.testng.annotations.Test;
 
 public class GroupsTest extends BaseTest {
     @Test (groups = "smoke")
-    public void stepb() {System.out.println("stepb...");}
+    public void stepb() {
+        System.out.println("stepb...");
+    }
 
     @Test (groups = "regression")
     public void stepa() {
