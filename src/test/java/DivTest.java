@@ -58,5 +58,9 @@ public class DivTest extends BaseTest {
         Assert.assertEquals(calculator.div(a, b), expectedResult, "Неверная деление...");
     }
 
+    @Test(expectedExceptions = ArithmeticException.class)
+    public void testExceptionsInt() {
+        Assert.assertEquals(calculator.div(10, 0), 0);
 
+    }
 }

@@ -3,6 +3,9 @@
 <suite name="Main Suite">
     <parameter name="login-value" value="user_1"/>
     <parameter name="psw-value" value="123123"/>
+    <parameter name="numberA" value="10"/>
+    <parameter name="numberB" value="5"/>
+
     <test name="Groups Test">
         <classes>
             <class name="ParamTest"/>

@@ -3,9 +3,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DivParamTest  {
-    @Parameters({"numberA-equals", "numberB-equals"})
+    @Parameters({"numberA", "numberB"})
     @Test
-    public void divParamTest(@Optional("Default numberA") String numberA, @Optional("numberB") String numberB){
-      //  System.out.println("Dividing numberA by numberB is: " + int a / int b);
+    public void divParamTest(@Optional("numberA") String numberA, @Optional("numberB") String numberB){
+        System.out.println("Dividing numberA by numberB is: " + Integer.parseInt(numberA) / Integer.parseInt(numberB));
     }
 }
