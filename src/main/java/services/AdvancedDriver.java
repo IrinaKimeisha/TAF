@@ -1,5 +1,6 @@
 package services;
 
+import configuration.ReadProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +13,7 @@ public class AdvancedDriver {
     }
     private ChromeOptions getChromeOptions(){
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setHeadless(false);
+        chromeOptions.setHeadless(ReadProperties.isHeadless());
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--silent");
