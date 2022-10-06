@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,9 +30,9 @@ public class CalkFloorTest {
     @Test
     public void calkFloorTest() {
         driver.get("https://kermi-fko.ru/raschety/Calc-Rehau-Solelec.aspx");
-        WebElement width = driver.findElement(By.id("el-f-width"));
+        WebElement width = driver.findElement(By.id("el_f_width"));
         width.sendKeys("3");
-        WebElement length = driver.findElement(By.id("el-f-length"));
+        WebElement length = driver.findElement(By.id("el_f_lenght"));
         length.sendKeys("4");
 
         WebElement selectYourRoom = driver.findElement(By.id("room_type"));
@@ -42,9 +43,12 @@ public class CalkFloorTest {
         Select selectHeatingType = new Select(selectYourHeatingType);
         selectHeatingType.selectByVisibleText("Основное отопление");
 
-        WebElement looses = driver.findElement(By.id("el-f-losses"));
-        looses.sendKeys(""); // внести изменения
+        WebElement button = driver.findElement(By.name("button"));
+        button.click();
 
+        WebElement floorCablePower = driver.findElement(By.id("floor_cable_power"));
+        WebElement specFloorCablePower = driver.findElement(By.id("spec_floor_cable_power"));
+        // сделать проверку
     }
 
     @AfterMethod
