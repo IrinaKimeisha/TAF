@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 public class RetryDivTest extends BaseTest {
     private int attempt = 1;
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, groups = "smoke")
     public void flakyTestDivInt() {
         if (attempt == 5) {
             Assert.assertEquals(calculator.div(10, 2), 5);

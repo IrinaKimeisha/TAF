@@ -3,12 +3,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DivTest extends BaseTest {
-    @Test
+    @Test(groups = "smoke", priority = 1)
     public void divIntTest() {
         Assert.assertEquals(calculator.div(10, 5), 2, "Неверное деление...");
     }
 
-    @Test
+    @Test(groups = "regression", priority = 2)
     public void divDoubleTest() {
         Assert.assertEquals(calculator.div(10.0, 5.0), 2.0, "Неверное деление...");
     }
@@ -58,9 +58,37 @@ public class DivTest extends BaseTest {
         Assert.assertEquals(calculator.div(a, b), expectedResult, "Неверная деление...");
     }
 
-    @Test(expectedExceptions = ArithmeticException.class)
-    public void testExceptionsInt() {
-        Assert.assertEquals(calculator.div(10, 0), 0);
+    @Test(expectedExceptions = ArithmeticException.class, groups = "smoke")
+    public void testExceptionsIntBy0(){
+        Assert.assertEquals(calculator.div(10, 0),0, "prohibited");
+    }
+    @Test(expectedExceptions = ArithmeticException.class, groups = "smoke")
+    public void testExceptionsNegIntBy0(){
+        Assert.assertEquals(calculator.div(-10, 0),0, "prohibited");
+    }
+    @Test(groups = "smoke")
+    public void testExceptions0byInt(){
+        Assert.assertEquals(calculator.div(0, 10), 0);
+    }
+    @Test(groups = "smoke")
+    public void testExceptions0byNegInt(){
+        Assert.assertEquals(calculator.div(0, -10), 0);
+    }
 
+    @Test(expectedExceptions = ArithmeticException.class, groups = "smoke")
+    public void testExceptionsInt0by0(){
+        Assert.assertEquals(calculator.div(0, 0), 0, "но так нельзя");
+    }
+    @Test(groups = "smoke")
+    public void testExceptionsDoubleBy0() throws ArithmeticException{
+        Assert.assertEquals(calculator.div(10.0, 0.0), Double.POSITIVE_INFINITY);
+    }
+    @Test(groups = "smoke")
+    public void testExceptionsNegDoubleBy0() throws ArithmeticException{
+        Assert.assertEquals(calculator.div(-10.0, 0.0), Double.NEGATIVE_INFINITY);
+    }
+    @Test(groups = "smoke")
+    public void testExceptionsDouble0by0() throws ArithmeticException{
+        Assert.assertEquals(calculator.div(0.0, 0.0), Double.NaN);
     }
 }

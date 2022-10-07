@@ -5,12 +5,14 @@
         <classes>
             <class name="CalcTest"/>
             <class name="DependencyTest"/>
+            <class name="DivTest"/>
         </classes>
     </test>
     <test name="Regression">
         <classes>
             <class name="AUnitTest"/>
             <class name="CalcTest"/>
+            <class name="DivTest"/>
         </classes>
     </test>
 </suite>
