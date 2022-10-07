@@ -12,12 +12,10 @@ public class SmokeTest {
     private WebDriver driver;
 
     @BeforeMethod
-
     public void setUp(){
         BrowsersService browsersService = new BrowsersService();
         driver = browsersService.getDriver();
     }
-
     @Test
     public void a_validateIKTCalculationTest(){
         driver.get("https://clinic-cvetkov.ru/company/kalkulyator-imt/");
