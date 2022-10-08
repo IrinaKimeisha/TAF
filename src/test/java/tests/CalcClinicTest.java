@@ -9,6 +9,7 @@ package tests;
     Проверить результаты: ‘Поверхность тела:1.58 (кв.м)’
     Закрыть окно браузера
 */
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

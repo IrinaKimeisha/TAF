@@ -43,17 +43,21 @@ public class CalkFloorTest {
         Select selectHeatingType = new Select(selectYourHeatingType);
         selectHeatingType.selectByVisibleText("Основное отопление");
 
+        WebElement losses = driver.findElement(By.id("el_f_losses"));
+        losses.sendKeys("1600");
+
         WebElement button = driver.findElement(By.name("button"));
         button.click();
 
         WebElement floorCablePower = driver.findElement(By.id("floor_cable_power"));
+        Assert.assertEquals(floorCablePower.getAttribute("value"), "1680");
         WebElement specFloorCablePower = driver.findElement(By.id("spec_floor_cable_power"));
-        // сделать проверку
+        Assert.assertEquals(specFloorCablePower.getAttribute("value"), "140");
     }
 
     @AfterMethod
     public void tearDown() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         driver.quit();
     }
 }
