@@ -42,7 +42,27 @@ public class Task_8 {
         driver.findElement(By.linkText("Reset App State".toUpperCase())).click();
 // поиск по partialLinkText
         driver.findElement(By.partialLinkText("Reset App".toUpperCase())).click(); */
+/**CssSelectors*/
+// по .class
+        driver.findElement(By.cssSelector(".primary_header"));
+// по .class1.class2
+        driver.findElements(By.cssSelector(".btn.btn_primary"));
+// по  .class1 .class2
+      // driver.findElement(By.cssSelector()));
+// по #id
+        driver.findElement(By.cssSelector("#menu_button_container"));
+// по tagname
+        driver.findElement(By.cssSelector("footer"));
+// по tagname.class
+        driver.findElement(By.cssSelector("div.footer_copy"));
+// по [attribute=value]
+        driver.findElement(By.cssSelector(""));
+// по [attribute~=value]
 
+// по [attribute|=value]
+// по [attribute^=value]
+// по [attribute$=value]
+// по [attribute*=value]
     }
 
     @AfterMethod
