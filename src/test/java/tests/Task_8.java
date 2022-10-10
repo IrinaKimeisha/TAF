@@ -12,13 +12,14 @@ import services.BrowsersService;
 
 public class Task_8 {
     private WebDriver driver;
+
     @BeforeMethod
     public void setUp() {
         driver = new BrowsersService().getDriver();
     }
 
     @Test
-    public void tryLocatorsTest(){
+    public void tryLocatorsTest() {
         driver.get(ReadProperties.getUrl());
 // поиск по ID
         driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
@@ -48,7 +49,7 @@ public class Task_8 {
 // по .class1.class2
         driver.findElements(By.cssSelector(".btn.btn_primary"));
 // по  .class1 .class2
-      // driver.findElement(By.cssSelector()));
+        // driver.findElement(By.cssSelector()));
 // по #id
         driver.findElement(By.cssSelector("#menu_button_container"));
 // по tagname
@@ -56,13 +57,17 @@ public class Task_8 {
 // по tagname.class
         driver.findElement(By.cssSelector("div.footer_copy"));
 // по [attribute=value]
-        driver.findElement(By.cssSelector(""));
+        driver.findElement(By.cssSelector("[data-test='product_sort_container']"));
 // по [attribute~=value]
-
+        driver.findElement(By.cssSelector("[alt~='Bolt']"));
 // по [attribute|=value]
+        driver.findElement(By.cssSelector("[class|='footer']"));
 // по [attribute^=value]
+        driver.findElement(By.cssSelector("[class^='r']"));
 // по [attribute$=value]
+        driver.findElement(By.cssSelector("[class$='ooter_robot']"));
 // по [attribute*=value]
+        driver.findElement(By.cssSelector("[alt*='Bol']"));
     }
 
     @AfterMethod
