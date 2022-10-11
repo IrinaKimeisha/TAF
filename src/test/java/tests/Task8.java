@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.BrowsersService;
 
-public class Task_8 {
+public class Task8 {
     private WebDriver driver;
 
     @BeforeMethod
@@ -19,7 +19,7 @@ public class Task_8 {
     }
 
     @Test
-    public void tryLocatorsTest() {
+    public void tryBasicLocatorsTest() {
         driver.get(ReadProperties.getUrl());
 // поиск по ID
         driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
@@ -43,7 +43,14 @@ public class Task_8 {
         driver.findElement(By.linkText("Reset App State".toUpperCase())).click();
 // поиск по partialLinkText
         driver.findElement(By.partialLinkText("Reset App".toUpperCase())).click(); */
-/**CssSelectors*/
+    }
+    /**CssSelectors*/
+    @Test
+    public void tryCssTest() {
+        driver.get(ReadProperties.getUrl());
+        driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
+        driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
+        driver.findElement(By.id("login-button")).click();
 // по .class
         driver.findElement(By.cssSelector(".primary_header"));
 // по .class1.class2
@@ -68,6 +75,34 @@ public class Task_8 {
         driver.findElement(By.cssSelector("[class$='ooter_robot']"));
 // по [attribute*=value]
         driver.findElement(By.cssSelector("[alt*='Bol']"));
+    }
+    @Test
+    public void tryXPathTest() {
+        driver.get(ReadProperties.getUrl());
+        driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
+        driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
+        driver.findElement(By.id("login-button")).click();
+/**по Xpath*/
+//Поиск по атрибуту, например By.xpath("//tag[@attribute='value']");
+        driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"));
+//Поиск по тексту, например By.xpath("//tag[text()='text']");
+        driver.findElement(By.xpath("//*"));
+//Поиск по частичному совпадению атрибута, например By.xpath("//tag[contains(@attribute,'text')]");
+        driver.findElement(By.xpath("//"));
+//Поиск по частичному совпадению текста, например By.xpath("//tag[contains(text(),'text')]");
+        driver.findElement(By.xpath("//"));
+//ancestor, например //*[text()='Enterprise Testing']//ancestor::div
+        driver.findElement(By.xpath("//*[@id='add-to-cart-sauce-labs-bolt-t-shirt']/ancestor::div"));
+//descendant
+        driver.findElement(By.xpath("//"));
+//following
+        driver.findElement(By.xpath("//"));
+//parent
+        driver.findElement(By.xpath("//"));
+//preceding
+        driver.findElement(By.xpath("//"));
+//поиск элемента с условием AND, например //input[@class='_2zrpKA _1dBPDZ' and @type='text']
+        driver.findElement(By.xpath("//"));
     }
 
     @AfterMethod
