@@ -12,27 +12,39 @@ import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
 import pages.TopMenuPage;
+import pages.projects.AddProjectPage;
+import pages.projects.UpdateProjectPage;
 import services.BrowsersService;
+import steps.LoginStep;
 
 public class LoginTest extends BaseTest {
+
+
     @Test
     public void successLoginTest() {
-        LoginPage loginPage = new LoginPage(driver);
-
-        loginPage.loginSuccessful(ReadProperties.username(), ReadProperties.password());
+        loginStep.login(ReadProperties.username(), ReadProperties.password());
 
         Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
 
     @Test
-    public void incorrectUsernameTest() {
-        // Какие-то действия
+    public void successLoginTest1() {
+        Assert.assertTrue(
+                loginStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+                        .isPageOpened());
+    }
 
-        DashboardPage dashboardPage = new DashboardPage(driver);
+    @Test
+    public void incorrectUsernameTest() {
+        Assert.assertEquals(
+                loginStep.loginIncorrect("sdsd", ReadProperties.password())
+                        .getErrorTextElement().getText()
+                , "Email/Login or Password is incorrect. Please try again.");
     }
 
     @Test
     public void incorrectPswTest() {
-
+        new UpdateProjectPage(driver).nameInput();
+        new AddProjectPage(driver).getSaveButton();
     }
 }
