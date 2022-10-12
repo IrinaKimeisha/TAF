@@ -86,23 +86,23 @@ public class Task8 {
 //Поиск по атрибуту, например By.xpath("//tag[@attribute='value']");
         driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-bolt-t-shirt']"));
 //Поиск по тексту, например By.xpath("//tag[text()='text']");
-        driver.findElement(By.xpath("//*"));
+        driver.findElement(By.xpath("//*[text() ='Sauce Labs Bike Light']"));
 //Поиск по частичному совпадению атрибута, например By.xpath("//tag[contains(@attribute,'text')]");
-        driver.findElement(By.xpath("//"));
+        driver.findElement(By.xpath("//div[contains(@id, 'inventory_contain')]"));
 //Поиск по частичному совпадению текста, например By.xpath("//tag[contains(text(),'text')]");
-        driver.findElement(By.xpath("//"));
+      //  driver.findElement(By.xpath("//*[contains(text(), 'Sauce Labs Bike ']"));
 //ancestor, например //*[text()='Enterprise Testing']//ancestor::div
         driver.findElement(By.xpath("//*[@id='add-to-cart-sauce-labs-bolt-t-shirt']/ancestor::div"));
 //descendant
-        driver.findElement(By.xpath("//"));
+        driver.findElement(By.xpath("//[]"));
 //following
-        driver.findElement(By.xpath("//"));
+       // driver.findElement(By.xpath("//"));
 //parent
-        driver.findElement(By.xpath("//"));
+       // driver.findElement(By.xpath("//"));
 //preceding
-        driver.findElement(By.xpath("//"));
+       // driver.findElement(By.xpath("//"));
 //поиск элемента с условием AND, например //input[@class='_2zrpKA _1dBPDZ' and @type='text']
-        driver.findElement(By.xpath("//"));
+       // driver.findElement(By.xpath("//"));
     }
 
     @AfterMethod
