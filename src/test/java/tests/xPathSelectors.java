@@ -97,7 +97,7 @@ public class xPathSelectors {
         // Поиск элемента у которого есть аттрибут id cо значением top-logo
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id = 'top-logo']")).isDisplayed());
 
-        // Поиск элемента у которого есть аттрибут method cо значением и фттрибут target со значением
+        // Поиск элемента у которого есть аттрибут method cо значением и аттрибут target со значением
         Assert.assertTrue(driver.findElement(By.xpath("//*[@method='post' and @target='_blank']")).isDisplayed());
 
         // Поиск элемента у которого значение аттрибута начинается с
