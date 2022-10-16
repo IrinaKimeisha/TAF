@@ -19,8 +19,7 @@ import steps.LoginStep;
 
 public class LoginTest extends BaseTest {
 
-
-    @Test
+  /*  @Test
     public void successLoginTest() {
         loginStep.login(ReadProperties.username(), ReadProperties.password());
 
@@ -46,5 +45,5 @@ public class LoginTest extends BaseTest {
     public void incorrectPswTest() {
         new UpdateProjectPage(driver).nameInput();
         new AddProjectPage(driver).getSaveButton();
-    }
+    }*/
 }
