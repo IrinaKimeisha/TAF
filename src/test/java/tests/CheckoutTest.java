@@ -4,8 +4,29 @@ import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CheckoutPage;
 
 public class CheckoutTest extends BaseTest {
+
+    @Test
+    public void successCheckoutTest() {
+        checkoutStep.checkoutSuccess(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
+        Assert.assertTrue(new CheckoutPage(driver).isPageOpened());
+        //не работающий пока бред
+    }
+
+
+    @Test
+    public void addInfoSuccess() {
+        loginSauceDemoStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
+        checkoutStep.addToCart();
+        checkoutStep.checkout(ReadProperties.firstNAme(),
+                ReadProperties.lastName(), ReadProperties.zip());
+        checkoutStep.finishButton();
+
+    }
+
+
 
    /* @Test
     public void someTest(){
