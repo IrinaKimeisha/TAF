@@ -2,8 +2,10 @@ package tests;
 
 import baseEntities.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.WaitsService;
 
@@ -25,6 +27,8 @@ public class ActionsTest extends BaseTest {
                 .click(wait.waitForExists(By.cssSelector("[href='/users/1']")))
                 .build()
                 .perform();
+
+        Assert.assertTrue(wait.waitForElementInvisible(targetElements.get(0)));
     }
 
     @Test
