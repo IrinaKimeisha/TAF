@@ -3,10 +3,12 @@ package steps;
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
 import pages.CartPage;
+import pages.LoginSauceDemoPage;
 import pages.ProductsSauceDemoPage;
 
 public class CartStep extends BaseStep {
     ProductsSauceDemoPage productsSauceDemoPage;
+    LoginSauceDemoPage loginSauceDemoPage;
     CartPage cartPage;
     public CartStep(WebDriver driver) {
         super(driver);
@@ -14,5 +16,9 @@ public class CartStep extends BaseStep {
         productsSauceDemoPage = new ProductsSauceDemoPage(driver);
     }
     public void addToCart(){
+        productsSauceDemoPage.openPageByUrl();
+
+
+
     }
 }
