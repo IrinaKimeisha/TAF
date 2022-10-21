@@ -18,17 +18,18 @@ public class ReadProperties {
     public static String getUrl() {
         return properties.getProperty("url");
     }
+    public static String getUrl1() {
+        return properties.getProperty("url1");
+    }
+    public static String getUrl2() {
+        return properties.getProperty("url2");
+    }
+public static String getUrl3() {
+        return properties.getProperty("url3");
+    }
 
     public static String browserName() {
         return properties.getProperty("browser");
-    }
-
-    public static String username() {
-        return properties.getProperty("username");
-    }
-
-    public static String password() {
-        return properties.getProperty("password");
     }
 
     public static boolean isHeadless() {
