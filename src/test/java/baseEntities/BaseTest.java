@@ -7,12 +7,10 @@ import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
 import steps.CheckoutStep;
 import steps.LoginSauceDemoStep;
-import steps.LoginStep;
 
 public class BaseTest {
     protected WebDriver driver;
     protected LoginSauceDemoStep loginSauceDemoStep;
-    protected CheckoutStep checkoutStep;
 
     @BeforeMethod
     public void setUp() {
@@ -20,6 +18,7 @@ public class BaseTest {
         driver.get(ReadProperties.getUrl());
 
         loginSauceDemoStep = new LoginSauceDemoStep(driver);
+        CheckoutStep checkoutStep = new CheckoutStep(driver);
     }
 
     @AfterMethod

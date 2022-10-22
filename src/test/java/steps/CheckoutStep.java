@@ -10,23 +10,29 @@ public class CheckoutStep extends BaseStep {
     public CheckoutStep(WebDriver driver) {
         super(driver);
         checkoutPage = new CheckoutPage(driver);
+
     }
-    public void addToCart(){
+    public void addToCart() {
+        // оставить
         checkoutPage.clickAddToCartButton();
         checkoutPage.clickShoppingCartContainer();
         checkoutPage.clickCheckoutButton();
     }
-    public void checkout(String firstName, String lastName, String zip){
+
+    public CheckoutPage checkout(String firstName, String lastName, String zip) {
+        //оставить
         checkoutPage.setFirstNameInput(firstName);
         checkoutPage.setLastNameInput(lastName);
         checkoutPage.setZipInput(zip);
         checkoutPage.clickContinueButton();
+        return new CheckoutPage(driver);
     }
 
     public CheckoutPage checkoutSuccess(String firstName, String lastName, String zip) {
         checkout(firstName, lastName, zip);
         return new CheckoutPage(driver);
     }
+
     public CheckoutPage checkoutCancel(String firstName, String lastName, String zip) {
         checkout(firstName, lastName, zip);
         return checkoutPage;
@@ -35,13 +41,16 @@ public class CheckoutStep extends BaseStep {
     public void continueButton() {
         checkoutPage.clickContinueButton();
     }
-    public void finishButton(){
+
+    public void finishButton() {
         checkoutPage.clickFinishButton();
     }
-    public void cancelButton(){
+
+    public void cancelButton() {
         checkoutPage.clickCancelButton();
     }
-    public void shoppingCartIcon(){
+
+    public void shoppingCartIcon() {
         checkoutPage.clickShoppingCartContainer();
     }
 }

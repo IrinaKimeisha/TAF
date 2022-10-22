@@ -6,30 +6,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CheckoutPage extends BasePage {
-    // Блок описания селекторов для элементов
-    private final By firstNameInputLocator = By.id("first-name");
-    private final By lastNameInputLocator = By.id("last-name");
-    private final By zipInputLocator = By.id("postal-code");
-    private final By continueButtonLocator = By.id("continue");
-    private final By cancelButtonLocator = By.id("cancel");
-    private final By addToCartButtonLocator = By.id("add-to-cart-sauce-labs-fleece-jacket");
-    private final By shoppingCartContainerLocator = By.id("shopping_cart_container");
-    private final By checkoutButtonLocator = By.id("checkout");
-    private final By finishButtonLocator = By.id("finish");
-    private final By removeButtonLocator = By.id("remove-sauce-labs-bike-light");
+    @Override
+    protected By getPageIdentifier() {
+        return checkoutButtonLocator;
+    }
 
-
-    // Блок инициализации страницы
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return continueButtonLocator;
-    }
+    //селекторы
+    private final By firstNameInputLocator = By.id("first-name");
+    private final By lastNameInputLocator = By.id("last-name");
+    private final By zipInputLocator = By.id("postal-code");
+    private final By continueButtonLocator = By.className("submit-button");
+    private final By cancelButtonLocator = By.id("cancel");
+    private final By addToCartButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
+    private final By shoppingCartContainerLocator = By.id("shopping_cart_container");
+    private final By checkoutButtonLocator = By.id("checkout");
+    private final By finishButtonLocator = By.id("finish");
+    //?private final By removeButtonLocator = By.id("remove-sauce-labs-bike-light");
 
-    // Блок атомарных методов
+    //атомарные методы
     public WebElement getFirstNameInput() {
         return driver.findElement(firstNameInputLocator);
     }
@@ -66,7 +64,6 @@ public class CheckoutPage extends BasePage {
         return driver.findElement(checkoutButtonLocator);
     }
 
-
     public void setFirstNameInput(String value) {
         getFirstNameInput().sendKeys(value);
     }
@@ -87,18 +84,20 @@ public class CheckoutPage extends BasePage {
         getCancelButton().click();
     }
 
-    public void clickAddToCartButton() {
-        getAddToCartButton().click();
+    public void clickAddToCartButton() {getAddToCartButton().click();
     }
 
     public void clickShoppingCartContainer() {
-        getCancelButton().click();
+        getShoppingCartContainer().click();
     }
 
     public void clickCheckoutButton() {
         getCheckoutButton().click();
     }
 
-    public void clickFinishButton() {getFinishButton().click();}
+    public void clickFinishButton() {
+        getFinishButton().click();
+    }
+
 
 }

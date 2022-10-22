@@ -2,51 +2,51 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CataloguePage;
 import pages.CheckoutPage;
+import steps.CheckoutStep;
 
 public class CheckoutTest extends BaseTest {
-
+    CheckoutPage checkoutPage;
+    CheckoutStep checkoutStep;
     @Test
-    public void successCheckoutTest() {
-        checkoutStep.checkoutSuccess(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
-        Assert.assertTrue(new CheckoutPage(driver).isPageOpened());
-        //не работающий пока бред
-    }
-
-
-    @Test
-    public void addInfoSuccess() {
+    public void successfulCheckoutTest() {
         loginSauceDemoStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         checkoutStep.addToCart();
-        checkoutStep.checkout(ReadProperties.firstNAme(),
-                ReadProperties.lastName(), ReadProperties.zip());
+        checkoutStep.checkoutSuccess(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
         checkoutStep.finishButton();
-
     }
-
-
-
-   /* @Test
-    public void someTest(){
-        Assert.assertTrue(
-                checkoutStep.checkoutSuccess(ReadProperties.firstNAme(),
-                        ReadProperties.lastName(),ReadProperties.zip(). //какая-то проверка)
-        );
-    }
-
-
-   /* @Test
-    public void successCheckoutTest() {
-        loginSauceDemoStep.loginSuccessful(ReadProperties.username(),
-                ReadProperties.password());
-        checkoutStep.addToCart();
+    @Test
+    public void cancelCheckoutTest() {
+        loginSauceDemoStep.loginSuccessful(ReadProperties.username(), ReadProperties.password());
         checkoutStep.shoppingCartIcon();
+        checkoutStep.checkoutCancel(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
+        checkoutStep.cancelButton();
+        Assert.assertTrue(checkoutPage.isPageOpened());
+    }
+    @Test // оставить
+    public void openCatalogueTest() {
+        loginSauceDemoStep.login(ReadProperties.username(), ReadProperties.password());
+        Assert.assertTrue(new CataloguePage(driver).isPageOpened());
+    }
+    @Test
+    public void returnToCartTest() {
+        loginSauceDemoStep.login(ReadProperties.username(), ReadProperties.password());
+        checkoutStep.addToCart();
+        checkoutStep.checkoutSuccess(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
         checkoutStep.continueButton();
-        checkoutStep.checkout(ReadProperties.firstNAme(), ReadProperties.lastName(),ReadProperties.zip());
-        checkoutStep.continueButton();
-        checkoutStep.finishButton();
-
-    }*/
+        checkoutStep.shoppingCartIcon();
+    }
+    @Test
+    public void openCheckoutPageTest() {
+        loginSauceDemoStep.login(ReadProperties.username(), ReadProperties.password());
+        driver.findElement(By.className("shopping_cart_link")).click();
+        driver.findElement(By.id("checkout")).click();
+        checkoutStep.checkoutSuccess(ReadProperties.firstNAme(), ReadProperties.lastName(), ReadProperties.zip());
+        driver.findElement(By.id("continue")).click();
+        Assert.assertTrue(new CheckoutPage(driver).isPageOpened());
+    }
 }

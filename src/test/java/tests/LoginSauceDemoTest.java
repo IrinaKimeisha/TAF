@@ -4,14 +4,14 @@ import baseEntities.BaseTest;
 import configuration.ReadProperties;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ProductsSauceDemoPage;
+import pages.CataloguePage;
 
 public class LoginSauceDemoTest extends BaseTest {
 
     @Test
     public void successLoginTest() {
         loginSauceDemoStep.login(ReadProperties.username(), ReadProperties.password());
-        Assert.assertTrue(new ProductsSauceDemoPage(driver).isPageOpened());
+        Assert.assertTrue(new CataloguePage(driver).isPageOpened());
     }
 
     // Вариант проще

@@ -2,8 +2,8 @@ package steps;
 
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
+import pages.CataloguePage;
 import pages.LoginSauceDemoPage;
-import pages.ProductsSauceDemoPage;
 
 public class LoginSauceDemoStep extends BaseStep {
 
@@ -19,16 +19,12 @@ public class LoginSauceDemoStep extends BaseStep {
         loginSauceDemoPage.setPsw(psw);
         loginSauceDemoPage.clickLoginButton();
     }
-    public ProductsSauceDemoPage loginSuccessful(String username, String psw) {
+    public CataloguePage loginSuccessful(String username, String psw) {
         login(username, psw);
-        return new ProductsSauceDemoPage(driver);
+        return new CataloguePage(driver);
     }
     public LoginSauceDemoPage loginIncorrect(String username, String psw) {
         login(username, psw);
         return loginSauceDemoPage;
-
-    }
-    public void logout(){
-
     }
 }
