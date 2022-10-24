@@ -9,7 +9,7 @@ import services.BrowsersService;
 import steps.LoginStep;
 import utils.Listener;
 
-@Listeners(Listener.class)
+//@Listeners(Listener.class)
 public class BaseTest {
     protected WebDriver driver;
     protected LoginStep loginStep;
@@ -17,9 +17,8 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         driver = new BrowsersService().getDriver();
-        //driver.get(ReadProperties.getUrl());
-
-        //loginStep = new LoginStep(driver);
+        driver.get(ReadProperties.getUrl());
+        loginStep = new LoginStep(driver);
     }
 
     @AfterMethod

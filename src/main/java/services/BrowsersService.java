@@ -27,7 +27,7 @@ public class BrowsersService {
                 //chromeOptions.addArguments("--window-size=1920,1200");
                 chromeOptions.addArguments("--ignore-certificate-errors");
                 chromeOptions.addArguments("--silent");
-                chromeOptions.addArguments("--start-maximized");
+                //chromeOptions.addArguments("--start-maximized");
 
                 driver = new ChromeDriver(chromeOptions);
 

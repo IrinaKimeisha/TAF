@@ -26,14 +26,12 @@ public class LoginTest extends BaseTest {
 
         Assert.assertTrue(new DashboardPage(driver).isPageOpened());
     }
-
     @Test
     public void successLoginTest1() {
         Assert.assertTrue(
                 loginStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
                         .isPageOpened());
     }
-
     @Test
     public void incorrectUsernameTest() {
         Assert.assertEquals(
@@ -41,7 +39,6 @@ public class LoginTest extends BaseTest {
                         .getErrorTextElement().getText()
                 , "Email/Login or Password is incorrect. Please try again.");
     }
-
     @Test
     public void incorrectPswTest() {
         new UpdateProjectPage(driver).nameInput();
