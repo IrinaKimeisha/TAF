@@ -12,6 +12,17 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         waitsService = new WaitsService(driver);
+
+
+    }
+
+    public BasePage(WebDriver driver, boolean openPageByUr) {
+        this.driver = driver;
+        waitsService = new WaitsService(driver);
+        if (openPageByUr) {
+            openPage();
+        }
+
     }
 
     protected abstract By getPageIdentifier();
@@ -20,7 +31,7 @@ public abstract class BasePage {
         return driver.findElement(getPageIdentifier()).isDisplayed();
     }
 
-    public void openPageByUrl(String pagePath) {
-        driver.get(ReadProperties.getUrl() + pagePath);
+    public abstract void openPage() {
+
     }
 }
