@@ -13,14 +13,4 @@ public class TopMenuPage extends BasePage {
     public TopMenuPage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
-    protected By getPageIdentifier() {
-        return pageIdentifier;
-    }
-
-    // Блок атомарных методов
-    //public WebElement getHeaderTitleLabel() { return driver.findElement(headerTitleLabelLocator); }
-
-    //public boolean isHeaderTitleLabelDisplayed() { return getHeaderTitleLabel().isDisplayed(); }
 }
