@@ -27,7 +27,7 @@ public class FindPageObject {
 
     //This NEEDS TO MATCH an element (id of level1elem1) inside a parent element (id of level2elem1).
     //Refer to test - testFindBysRev.
-    //Return a NoSuchElementException as element heirarchy is not present.
+    //Return a NoSuchElementException as element hierarchy is not present.
     @FindBys({
             @FindBy(id="level2elem1"),
             @FindBy(id="level1elem1")
@@ -45,7 +45,7 @@ public class FindPageObject {
     private WebElement singleFindAllUI;
 
     //This will match the first element that matches any of the 3 criterion.
-    //In this case the inner elemnts FindBy are placed first.
+    //In this case the inner elements FindBy are placed first.
     //Refer to test - testFindByAllRev.
     //Return a POSITIVE match of top most element (id of level2elem2).
     @FindAll({

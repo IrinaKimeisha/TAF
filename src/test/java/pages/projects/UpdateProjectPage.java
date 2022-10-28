@@ -7,5 +7,4 @@ public class UpdateProjectPage extends BaseProjectPage {
     public UpdateProjectPage(WebDriver driver) {
         super(driver);
     }
-
 }

@@ -29,7 +29,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void successLoginTest1() {
         Assert.assertTrue(
-                loginStep.loginSuccessful(ReadProperties.username(), ReadProperties.password())
+                loginStep.loginSuccessful(ReadProperties.username(),
+                                ReadProperties.password())
                         .isHeaderTitleLabelDisplayed());
     }
     @Test

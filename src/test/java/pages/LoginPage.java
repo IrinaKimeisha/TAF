@@ -23,7 +23,6 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-
     // Блок атомарных методов
 
     public void setEmail(String value) { emailInput.sendKeys(value); }
