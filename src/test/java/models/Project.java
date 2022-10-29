@@ -8,6 +8,15 @@ public class Project {
     private  int type;
     private boolean showAnon;
     private boolean access;
+    private boolean deleted;
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public String getName() {
         return name;
@@ -52,7 +61,10 @@ public class Project {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Project project)) return false;
-        return type == project.type && showAnon == project.showAnon && access == project.access && Objects.equals(name, project.name) && Objects.equals(description, project.description);
+        if (!(o instanceof Project)) return false;
+        Project project = (Project) o;
+        return type == project.type && showAnon == project
+                .showAnon && access == project.access
+                && deleted == project.deleted && Objects.equals(name, project.name) && Objects.equals(description, project.description);
     }
 }
