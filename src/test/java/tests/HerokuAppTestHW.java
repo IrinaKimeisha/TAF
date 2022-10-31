@@ -53,13 +53,15 @@ public class HerokuAppTestHW extends BaseTest {
     @Test
     public void fileUploadTest() {
         driver.get(ReadProperties.getUrl2());
+
+        WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
+
         WebElement fileUploadPath = wait.waitForExists(By.id("file-upload"));
-        String pathToFile = HerokuAppTestHW.class.getClassLoader().getResource("Снимок экрана (52).jpeg").getPath();
+        String pathToFile = HerokuAppTestHW.class.getClassLoader().getResource("kit.jpeg").getPath();
         fileUploadPath.sendKeys(pathToFile);
         wait.waitForExists(By.id("file-submit")).submit();
-        Assert.assertEquals(wait.waitForExists(By.id("uploaded-files")).getText(), "Снимок экрана (52).jpeg");
+        Assert.assertEquals(wait.waitForExists(By.id("uploaded-files")).getText(), "kit.jpeg");
     }
-
     @Test
     public void frameTest() {
         driver.get(ReadProperties.getUrl3());
