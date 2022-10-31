@@ -57,8 +57,9 @@ public class HerokuAppTestHW extends BaseTest {
         WaitsService wait = new WaitsService(driver, Duration.ofSeconds(10));
 
         WebElement fileUploadPath = wait.waitForExists(By.id("file-upload"));
-        String pathToFile = HerokuAppTestHW.class.getClassLoader().getResource("kit.jpeg").getPath();
+        String pathToFile = HerokuAppTestHW.class.getClassLoader().getResource("kit.jpeg").getPath().substring(1);
         fileUploadPath.sendKeys(pathToFile);
+        System.out.println(pathToFile);
         wait.waitForExists(By.id("file-submit")).submit();
         Assert.assertEquals(wait.waitForExists(By.id("uploaded-files")).getText(), "kit.jpeg");
     }
