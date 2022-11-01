@@ -10,11 +10,11 @@ public class CheckBox {
         this.uiElement = new UIElement(driver, by);
     }
 
-    public void set() {
+    public void setFlag() {
         click(true);
     }
 
-    public void remove() {
+    public void removeFlag() {
         click(false);
     }
 
