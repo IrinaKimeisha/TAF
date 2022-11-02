@@ -1,15 +1,17 @@
 package baseEntities;
 
 import configuration.ReadProperties;
-import io.qameta.allure.Attachment;
+import configuration.UpdateEnvironmentProperties;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import services.BrowsersService;
@@ -20,40 +22,35 @@ import utils.InvokedListener;
 public class BaseTest {
     protected WebDriver driver;
     protected LoginStep loginStep;
+    private Capabilities capabilities;
 
     @BeforeMethod(description = "Настройка")
     @Description("Настройка")
-    public void setUp(ITestContext iTestContext) {
+    public void setUp(@NotNull ITestContext iTestContext) {
         driver = new BrowsersService().getDriver();
-        // Solution 1
         iTestContext.setAttribute("driver", driver);
-        // Solution 1 - Finish
 
+        capabilities = ((RemoteWebDriver)driver).getCapabilities();
+
+        // Open te main page
         driver.get(ReadProperties.getUrl());
 
+        // Init steps
         loginStep = new LoginStep(driver);
     }
 
     @AfterMethod(description = "Завершение")
     public void tearDown(ITestResult testResult) {
-        // Solution - 2: Плохое решение - потому, что Screenshot добавляется в шаг TearDown
-        /*
-        if (testResult.getStatus() == ITestResult.FAILURE) {
-            try {
-                byte[] srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                saveScreenshot(srcFile);
-            } catch (NoSuchSessionException ex) {
 
-            }
-        }
-        */
         driver.quit();
     }
 
-    // Solution - 2:
-    @Attachment(value = "Page screenshot", type = "image/png")
-    private byte[] saveScreenshot(byte[] screenshot) {
-        return screenshot;
+    @AfterTest
+    public void storeInfo() {
+        UpdateEnvironmentProperties.setProperty("os.name", System.getProperty("os.name"));
+        UpdateEnvironmentProperties.setProperty("user.home", System.getProperty("user.home"));
+        UpdateEnvironmentProperties.setProperty("browser.name", capabilities.getBrowserName());
+        UpdateEnvironmentProperties.setProperty("browser.version", capabilities.getBrowserVersion());
+        UpdateEnvironmentProperties.storeEnvProperties();
     }
-    // Solution - 2: Finish
 }
