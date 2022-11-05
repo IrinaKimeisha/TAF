@@ -1,38 +1,29 @@
 package pages;
 
 import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DashboardPage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+public class DashboardPage {
     private final static String pagePath = "index.php?/dashboard";
 
     // Блок описания селекторов для элементов
     private final By headerTitleLabelLocator = By.xpath("//div[contains(text(), 'TestRail QA')]");
 
 
-    public TopMenuPage topMenuPage;
-
     // Блок инициализации страницы
-    public DashboardPage(WebDriver driver) {
-        super(driver);
-
-        topMenuPage = new TopMenuPage(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
-    }
-
     public void openPageByUrl() {
-        super.openPageByUrl(pagePath);
+        open(pagePath);
     }
 
     // Блок атомарных методов
-    public WebElement getHeaderTitleLabel() {
-        return driver.findElement(headerTitleLabelLocator);
+    public SelenideElement getHeaderTitleLabel() {
+        return $(headerTitleLabelLocator);
     }
 
     public boolean isHeaderTitleLabelDisplayed() {

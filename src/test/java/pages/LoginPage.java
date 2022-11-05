@@ -1,12 +1,16 @@
 package pages;
 
 import baseEntities.BasePage;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import configuration.ReadProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+
+public class LoginPage {
     // Блок описания селекторов для элементов
     private final By emailInputLocator = By.id("name");
     private final By pswInputLocator = By.id("password");
@@ -14,22 +18,32 @@ public class LoginPage extends BasePage {
     private final By errorTextLocator = By.className("error-text");
 
     // Блок инициализации страницы
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return loginButtonLocator;
-    }
-
     // Блок атомарных методов
-    public WebElement getEmailInput() { return driver.findElement(emailInputLocator); }
-    public WebElement getPswInput() { return driver.findElement(pswInputLocator); }
-    public WebElement getLoginButton() { return driver.findElement(loginButtonLocator); }
+    public SelenideElement getEmailInput() {
+        return $(emailInputLocator).shouldBe(Condition.visible);
+    }
 
-    public void setEmail(String value) { getEmailInput().sendKeys(value); }
-    public void setPsw(String value) { getPswInput().sendKeys(value); }
-    public void clickLoginButton() { getLoginButton().click(); }
-    public WebElement getErrorTextElement() { return driver.findElement(errorTextLocator); }
+    public SelenideElement getPswInput() {
+        return $(pswInputLocator).shouldBe(Condition.visible);
+    }
+
+    public SelenideElement getLoginButton() {
+        return $(loginButtonLocator).shouldBe(Condition.visible);
+    }
+
+    public void setEmail(String value) {
+        getEmailInput().setValue(value);
+    }
+
+    public void setPsw(String value) {
+        getPswInput().setValue(value);
+    }
+
+    public void clickLoginButton() {
+        getLoginButton().click();
+    }
+
+    public WebElement getErrorTextElement() {
+        return $(errorTextLocator);
+    }
 }
