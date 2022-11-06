@@ -1,11 +1,8 @@
 package pages;
 
-import baseEntities.BasePage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import configuration.ReadProperties;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.$;
