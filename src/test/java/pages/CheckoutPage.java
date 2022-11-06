@@ -24,8 +24,10 @@ public class CheckoutPage extends BasePage {
     private final By addToCartButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
     private final By shoppingCartContainerLocator = By.id("shopping_cart_container");
     private final By checkoutButtonLocator = By.id("checkout");
-    private final By finishButtonLocator = By.id("finish");
-    //?private final By removeButtonLocator = By.id("remove-sauce-labs-bike-light");
+    private final By finishButtonLocator = By.className("btn_action");
+    private final By errorTextLocator = By.className("error-message-container");
+    private final By infoOfElementLocator = By.className("inventory_item_name");
+
 
     //атомарные методы
     public WebElement getFirstNameInput() {
@@ -64,6 +66,15 @@ public class CheckoutPage extends BasePage {
         return driver.findElement(checkoutButtonLocator);
     }
 
+    public WebElement getErrorTextElement() {
+        return driver.findElement(errorTextLocator);
+    }
+
+    public WebElement getInfoOfElementElement() {
+        return driver.findElement(infoOfElementLocator);
+    }
+
+
     public void setFirstNameInput(String value) {
         getFirstNameInput().sendKeys(value);
     }
@@ -84,19 +95,24 @@ public class CheckoutPage extends BasePage {
         getCancelButton().click();
     }
 
-    public void clickAddToCartButton() {getAddToCartButton().click();
+    public void clickAddToCartButton() {
+        getAddToCartButton().click();
+    }
+
+    public void clickInfoOfElement() {
+        getInfoOfElementElement().click();
     }
 
     public void clickShoppingCartContainer() {
         getShoppingCartContainer().click();
     }
 
-    public void clickCheckoutButton() {
-        getCheckoutButton().click();
-    }
-
     public void clickFinishButton() {
         getFinishButton().click();
+    }
+
+    public void clickCheckoutButton() {
+        getCheckoutButton().click();
     }
 
 
