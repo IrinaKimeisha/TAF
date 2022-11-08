@@ -13,6 +13,7 @@ public class LoginTest {
 
     @Test
     public void loginTest1() {
+
         open(ReadProperties.getUrl());
 
         $(By.id("user-name")).setValue(ReadProperties.username());
@@ -24,6 +25,7 @@ public class LoginTest {
 
     @Test
     public void loginTest2() {
+
         open(ReadProperties.getUrl());
 
         SelenideElement username = $(By.id("user-name"));
