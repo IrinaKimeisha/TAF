@@ -14,7 +14,6 @@ public class ReadProperties {
             e.printStackTrace();
         }
     }
-
     public static String getUrl() {
         return properties.getProperty("url");
     }

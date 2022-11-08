@@ -13,6 +13,7 @@ public class CheckoutStep extends BaseStep {
         checkoutPage = new CheckoutPage(driver);
 
     }
+
     public void addToCart() {
         checkoutPage.clickAddToCartButton();
         checkoutPage.clickShoppingCartContainer();
@@ -24,6 +25,7 @@ public class CheckoutStep extends BaseStep {
         checkoutPage.setLastNameInput(lastName);
         checkoutPage.setZipInput(zip);
     }
+
     public CheckoutPage ifCheckoutIncorrect(String firstName, String lastName, String zip) {
         checkoutPage.setFirstNameInput(firstName);
         checkoutPage.setLastNameInput(lastName);
@@ -47,5 +49,8 @@ public class CheckoutStep extends BaseStep {
     public void shoppingCartIcon() {
         checkoutPage.clickShoppingCartContainer();
     }
-    public void infoOfElement() {checkoutPage.clickInfoOfElement();}
+
+    public void infoOfElement() {
+        checkoutPage.clickInfoOfElement();
+    }
 }
