@@ -1,19 +1,24 @@
 package pages;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class CataloguePage extends BasePage {
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+public class CataloguePage {
     private final static String pagePath = "inventory.html";
     private final By headerTitleLabelLocator = By.xpath("//span[contains(text(), 'Products')]"); //показатель того, что страница каталога открыта
 
-    public CataloguePage(WebDriver driver) {
-        super(driver);
+    public void openPageByUrl() {
+        open(pagePath);
     }
 
-    @Override
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
+    public SelenideElement getPageIdentifier() {
+        return $(headerTitleLabelLocator);
+    }
+
+    public boolean isHeaderTitleLabelDisplayed() {
+        return getPageIdentifier().isDisplayed();
     }
 }

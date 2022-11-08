@@ -1,16 +1,12 @@
 package steps;
 
-import baseEntities.BaseStep;
-import org.openqa.selenium.WebDriver;
 import pages.CheckoutPage;
 
-public class CheckoutStep extends BaseStep {
+public class CheckoutStep {
     CheckoutPage checkoutPage;
 
-    public CheckoutStep(WebDriver driver) {
-        super(driver);
-
-        checkoutPage = new CheckoutPage(driver);
+    public CheckoutStep() {
+        checkoutPage = new CheckoutPage();
 
     }
     public void addToCart() {

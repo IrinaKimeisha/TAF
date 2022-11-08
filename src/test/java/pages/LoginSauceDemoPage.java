@@ -1,54 +1,48 @@
 package pages;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class LoginSauceDemoPage extends BasePage {
+
+import static com.codeborne.selenide.Selenide.$;
+
+public class LoginSauceDemoPage {
     // Блок описания селекторов для элементов
     private final By usernameInputLocator = By.id("user-name");
     private final By pswInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("login-button");
     private final By errorTextLocator = By.className("error-message-container");
 
-    // Блок инициализации страницы
-    public LoginSauceDemoPage(WebDriver driver) {
-        super(driver);
-    }
-
-    @Override
-    protected By getPageIdentifier() {
-        return loginButtonLocator;
-    }
 
     // Блок атомарных методов
-    public WebElement getUsernameInput() {
-        return driver.findElement(usernameInputLocator);
+    public SelenideElement getUsernameInput() {
+        return $(usernameInputLocator).shouldBe(Condition.visible);
     }
 
-    public WebElement getPswInput() {
-        return driver.findElement(pswInputLocator);
+    public SelenideElement getPswInput() {
+        return $(pswInputLocator).shouldBe(Condition.visible);
     }
 
-    public WebElement getLoginButton() {
-        return driver.findElement(loginButtonLocator);
+    public SelenideElement getLoginButton() {
+        return $(loginButtonLocator);
     }
 
 
     public void setUsername(String value) {
-        getUsernameInput().sendKeys(value);
+        getUsernameInput().setValue(value);
     }
 
     public void setPsw(String value) {
-        getPswInput().sendKeys(value);
+        getPswInput().setValue(value);
     }
 
     public void clickLoginButton() {
         getLoginButton().click();
     }
-    public WebElement getErrorTextElement(){
-        return driver.findElement(errorTextLocator);
+
+    public SelenideElement getErrorTextElement() {
+        return $(errorTextLocator);
     }
 
 }

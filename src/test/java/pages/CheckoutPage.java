@@ -1,19 +1,11 @@
 package pages;
 
-import baseEntities.BasePage;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-public class CheckoutPage extends BasePage {
-    @Override
-    protected By getPageIdentifier() {
-        return checkoutButtonLocator;
-    }
+import static com.codeborne.selenide.Selenide.$;
 
-    public CheckoutPage(WebDriver driver) {
-        super(driver);
-    }
+public class CheckoutPage{
 
     //селекторы
     private final By firstNameInputLocator = By.id("first-name");
@@ -30,61 +22,61 @@ public class CheckoutPage extends BasePage {
 
 
     //атомарные методы
-    public WebElement getFirstNameInput() {
-        return driver.findElement(firstNameInputLocator);
+    public SelenideElement getFirstNameInput() {
+        return $(firstNameInputLocator);
     }
 
-    public WebElement getLastNameInput() {
-        return driver.findElement(lastNameInputLocator);
+    public SelenideElement getLastNameInput() {
+        return $(lastNameInputLocator);
     }
 
-    public WebElement getZipInput() {
-        return driver.findElement(zipInputLocator);
+    public SelenideElement getZipInput() {
+        return $(zipInputLocator);
     }
 
-    public WebElement getContinueButton() {
-        return driver.findElement(continueButtonLocator);
+    public SelenideElement getContinueButton() {
+        return $(continueButtonLocator);
     }
 
-    public WebElement getCancelButton() {
-        return driver.findElement(cancelButtonLocator);
+    public SelenideElement getCancelButton() {
+        return $(cancelButtonLocator);
     }
 
-    public WebElement getFinishButton() {
-        return driver.findElement(finishButtonLocator);
+    public SelenideElement getFinishButton() {
+        return $(finishButtonLocator);
     }
 
-    public WebElement getAddToCartButton() {
-        return driver.findElement(addToCartButtonLocator);
+    public SelenideElement getAddToCartButton() {
+        return $(addToCartButtonLocator);
     }
 
-    public WebElement getShoppingCartContainer() {
-        return driver.findElement(shoppingCartContainerLocator);
+    public SelenideElement getShoppingCartContainer() {
+        return $(shoppingCartContainerLocator);
     }
 
-    public WebElement getCheckoutButton() {
-        return driver.findElement(checkoutButtonLocator);
+    public SelenideElement getCheckoutButton() {
+        return $(checkoutButtonLocator);
     }
 
-    public WebElement getErrorTextElement() {
-        return driver.findElement(errorTextLocator);
+    public SelenideElement getErrorTextElement() {
+        return $(errorTextLocator);
     }
 
-    public WebElement getInfoOfElementElement() {
-        return driver.findElement(infoOfElementLocator);
+    public SelenideElement getInfoOfElementElement() {
+        return $(infoOfElementLocator);
     }
 
 
     public void setFirstNameInput(String value) {
-        getFirstNameInput().sendKeys(value);
+        getFirstNameInput().setValue(value);
     }
 
     public void setLastNameInput(String value) {
-        getLastNameInput().sendKeys(value);
+        getLastNameInput().setValue(value);
     }
 
     public void setZipInput(String value) {
-        getZipInput().sendKeys(value);
+        getZipInput().setValue(value);
     }
 
     public void clickContinueButton() {
