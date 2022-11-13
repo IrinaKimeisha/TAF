@@ -11,9 +11,4 @@ public class WebDriverFactory {
     static {
         driver = new BrowsersService().getDriver();
     }
-
-    public static WebDriver getDriver() {
-        return driver;
-    }
-
-   }
+}
