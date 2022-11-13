@@ -1,4 +1,7 @@
 package steps;
 
-public class ProjectsStep {
+import baseEntities.BaseTest;
+
+public class ProjectsStep  extends BaseTest {
+
 }

@@ -18,6 +18,10 @@ public class CheckBox {
         click(false);
     }
 
+    public boolean isSelected() {
+        return uiElement.isSelected();
+    }
+
     private void click(boolean flag) {
         if (flag != uiElement.isSelected()) {
             uiElement.click();
