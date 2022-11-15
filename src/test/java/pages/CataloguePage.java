@@ -10,10 +10,6 @@ public class CataloguePage {
     private final static String pagePath = "inventory.html";
     private final By headerTitleLabelLocator = By.xpath("//span[contains(text(), 'Products')]"); //показатель того, что страница каталога открыта
 
-    public void openPageByUrl() {
-        open(pagePath);
-    }
-
     public SelenideElement getPageIdentifier() {
         return $(headerTitleLabelLocator);
     }

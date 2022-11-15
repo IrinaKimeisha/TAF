@@ -8,9 +8,11 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class LoginSauceDemoStep {
     LoginSauceDemoPage loginSauceDemoPage;
+    CataloguePage cataloguePage;
 
     public LoginSauceDemoStep() {
         loginSauceDemoPage = new LoginSauceDemoPage();
+        cataloguePage = new CataloguePage();
     }
 
     public void login(String username, String psw) {

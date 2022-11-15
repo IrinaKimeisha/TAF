@@ -1,11 +1,12 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CheckoutPage{
+public class CheckoutPage {
 
     //селекторы
     private final By firstNameInputLocator = By.id("first-name");
@@ -23,27 +24,27 @@ public class CheckoutPage{
 
     //атомарные методы
     public SelenideElement getFirstNameInput() {
-        return $(firstNameInputLocator);
+        return $(firstNameInputLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getLastNameInput() {
-        return $(lastNameInputLocator);
+        return $(lastNameInputLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getZipInput() {
-        return $(zipInputLocator);
+        return $(zipInputLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getContinueButton() {
-        return $(continueButtonLocator);
+        return $(continueButtonLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getCancelButton() {
-        return $(cancelButtonLocator);
+        return $(cancelButtonLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getFinishButton() {
-        return $(finishButtonLocator);
+        return $(finishButtonLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getAddToCartButton() {
@@ -51,19 +52,19 @@ public class CheckoutPage{
     }
 
     public SelenideElement getShoppingCartContainer() {
-        return $(shoppingCartContainerLocator);
+        return $(shoppingCartContainerLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getCheckoutButton() {
-        return $(checkoutButtonLocator);
+        return $(checkoutButtonLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getErrorTextElement() {
-        return $(errorTextLocator);
+        return $(errorTextLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getInfoOfElementElement() {
-        return $(infoOfElementLocator);
+        return $(infoOfElementLocator).shouldBe(Condition.visible);
     }
 
 
