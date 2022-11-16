@@ -1,8 +1,7 @@
-package tests;
+package tests.gui;
 
 import baseEntities.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;

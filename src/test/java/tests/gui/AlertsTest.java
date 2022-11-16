@@ -1,4 +1,4 @@
-package tests;
+package tests.gui;
 
 import baseEntities.BaseTest;
 import org.openqa.selenium.Alert;

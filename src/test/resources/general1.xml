@@ -3,7 +3,7 @@
 <suite name="Main Suite">
     <test name="Smoke">
         <classes>
-            <class name="tests.WindowsTest">
+            <class name="tests.gui.WindowsTest">
             </class>
         </classes>
     </test>

@@ -3,7 +3,7 @@
 <suite name="Main Suite">
     <test name="Smoke">
         <classes>
-            <class name="tests.AlertsTest"/>
+            <class name="tests.gui.AlertsTest"/>
         </classes>
     </test>
 </suite>
