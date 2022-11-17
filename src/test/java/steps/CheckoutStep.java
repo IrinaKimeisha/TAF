@@ -14,16 +14,20 @@ public class CheckoutStep extends BaseStep {
 
     }
 
-    public void addToCart() {
+    public CheckoutPage addToCart() {
         checkoutPage.clickAddToCartButton();
         checkoutPage.clickShoppingCartContainer();
         checkoutPage.clickCheckoutButton();
+
+        return checkoutPage;
     }
 
-    public void ifCheckoutSuccess(String firstName, String lastName, String zip) {
+    public CheckoutPage ifCheckoutSuccess(String firstName, String lastName, String zip) {
         checkoutPage.setFirstNameInput(firstName);
         checkoutPage.setLastNameInput(lastName);
         checkoutPage.setZipInput(zip);
+
+        return checkoutPage;
     }
 
     public CheckoutPage ifCheckoutIncorrect(String firstName, String lastName, String zip) {

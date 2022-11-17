@@ -8,16 +8,18 @@ import pages.LoginSauceDemoPage;
 public class LoginSauceDemoStep extends BaseStep {
 
     LoginSauceDemoPage loginSauceDemoPage;
+    CataloguePage cataloguePage;
 
     public LoginSauceDemoStep(WebDriver driver) {
         super(driver);
         loginSauceDemoPage = new LoginSauceDemoPage(driver);
     }
 
-    public void login(String username, String psw) {
+    public CataloguePage login(String username, String psw) {
         loginSauceDemoPage.setUsername(username);
         loginSauceDemoPage.setPsw(psw);
         loginSauceDemoPage.clickLoginButton();
+        return cataloguePage;
     }
     public CataloguePage loginSuccessful(String username, String psw) {
         login(username, psw);
