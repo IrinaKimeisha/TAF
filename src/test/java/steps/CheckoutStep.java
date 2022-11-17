@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import pages.CheckoutPage;
 
 public class CheckoutStep {
@@ -9,17 +10,22 @@ public class CheckoutStep {
         checkoutPage = new CheckoutPage();
 
     }
+
+    @Step("если что удалить, если вдруг тесты вздумают сойти с ума")
     public void addToCart() {
         checkoutPage.clickAddToCartButton();
         checkoutPage.clickShoppingCartContainer();
         checkoutPage.clickCheckoutButton();
     }
 
+    @Step
     public void ifCheckoutSuccess(String firstName, String lastName, String zip) {
         checkoutPage.setFirstNameInput(firstName);
         checkoutPage.setLastNameInput(lastName);
         checkoutPage.setZipInput(zip);
     }
+
+    @Step
     public CheckoutPage ifCheckoutIncorrect(String firstName, String lastName, String zip) {
         checkoutPage.setFirstNameInput(firstName);
         checkoutPage.setLastNameInput(lastName);
@@ -43,5 +49,8 @@ public class CheckoutStep {
     public void shoppingCartIcon() {
         checkoutPage.clickShoppingCartContainer();
     }
-    public void infoOfElement() {checkoutPage.clickInfoOfElement();}
+
+    public void infoOfElement() {
+        checkoutPage.clickInfoOfElement();
+    }
 }

@@ -2,6 +2,8 @@ package tests;
 
 import baseEntities.BaseSelenideTest;
 import configuration.ReadProperties;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import pages.CheckoutPage;
 import steps.CheckoutStep;
@@ -12,7 +14,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class CheckoutTest extends BaseSelenideTest {
 
-    @Test
+    @Story("Test 1")
+    @Test(description = "успешная регистрация и добавление в корзинку")
     public void successfulCheckoutTest() {
         LoginSauceDemoStep loginSauceDemoStep = open("", LoginSauceDemoStep.class);
         loginSauceDemoStep.login(ReadProperties.username(), ReadProperties.password());
@@ -23,6 +26,7 @@ public class CheckoutTest extends BaseSelenideTest {
         checkoutStep.finishButton();
     }
 
+    @Story("Test 2")
     @Test
     public void infoOfCheckoutTest() {
         LoginSauceDemoStep loginSauceDemoStep = open("", LoginSauceDemoStep.class);
@@ -35,7 +39,9 @@ public class CheckoutTest extends BaseSelenideTest {
         checkoutStep.infoOfElement();
     }
 
+    @Story("Test 3")
     @Test
+    @Description("Возврат на страницу каталога")
     public void returnToCatalogueTest() {
         LoginSauceDemoStep loginSauceDemoStep = open("", LoginSauceDemoStep.class);
         CheckoutStep checkoutStep = open("", CheckoutStep.class);
@@ -47,6 +53,7 @@ public class CheckoutTest extends BaseSelenideTest {
         checkoutStep.cancelButton();
     }
 
+    @Story("Test 4")
     @Test
     public void returnToCartTest() {
         LoginSauceDemoStep loginSauceDemoStep = open("", LoginSauceDemoStep.class);
