@@ -16,7 +16,7 @@
     </image>
     <text>
         <data>Click Here</data>
-        <size>36</size>
+        <size>38</size>
         <style>bold</style>
         <name>text1</name>
         <hOffset>250</hOffset>
