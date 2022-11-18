@@ -13,6 +13,7 @@ import steps.LoginSauceDemoStep;
 import static com.codeborne.selenide.Selenide.open;
 
 public class CheckoutTest extends BaseSelenideTest {
+    CheckoutPage checkoutPage;
 
     @Story("Test 1")
     @Test(description = "успешная регистрация и добавление в корзинку")

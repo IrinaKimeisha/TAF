@@ -15,7 +15,7 @@ public class CheckoutPage {
     private final By continueButtonLocator = By.className("submit-button");
     private final By cancelButtonLocator = By.id("cancel");
     private final By addToCartButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
-    private final By shoppingCartContainerLocator = By.id("shopping_cart_container");
+    private final By shoppingCartContainerLocator = By.className("shopping_cart_link");
     private final By checkoutButtonLocator = By.id("checkout");
     private final By finishButtonLocator = By.className("btn_action");
     private final By errorTextLocator = By.className("error-message-container");
