@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginTest {
-    @Description("Успешный вход на сайт. Версия 1 добавить в описание аллюр!")
+    @Description("Успешный вход на сайт. Версия 1")
     @Test
     public void loginTest1() {
 
