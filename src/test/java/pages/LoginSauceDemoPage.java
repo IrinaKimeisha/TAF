@@ -13,7 +13,6 @@ public class LoginSauceDemoPage {
     private final By pswInputLocator = By.id("password");
     private final By loginButtonLocator = By.id("login-button");
     private final By errorTextLocator = By.className("error-message-container");
-
     // Блок атомарных методов
     public SelenideElement getUsernameInput() {
         return $(usernameInputLocator).shouldBe(Condition.visible);
@@ -39,6 +38,6 @@ public class LoginSauceDemoPage {
     }
 
     public SelenideElement getErrorTextElement() {
-        return $(errorTextLocator);
+        return $(errorTextLocator).shouldBe(Condition.visible);
     }
 }

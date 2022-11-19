@@ -12,6 +12,7 @@ public class CheckoutPage {
     private final By firstNameInputLocator = By.id("first-name");
     private final By lastNameInputLocator = By.id("last-name");
     private final By zipInputLocator = By.id("postal-code");
+
     private final By continueButtonLocator = By.className("submit-button");
     private final By cancelButtonLocator = By.id("cancel");
     private final By addToCartButtonLocator = By.id("add-to-cart-sauce-labs-backpack");
@@ -48,7 +49,7 @@ public class CheckoutPage {
     }
 
     public SelenideElement getAddToCartButton() {
-        return $(addToCartButtonLocator);
+        return $(addToCartButtonLocator).shouldBe(Condition.visible);
     }
 
     public SelenideElement getShoppingCartContainer() {
@@ -63,7 +64,7 @@ public class CheckoutPage {
         return $(errorTextLocator).shouldBe(Condition.visible);
     }
 
-    public SelenideElement getInfoOfElementElement() {
+    public SelenideElement getInfoOfElement() {
         return $(infoOfElementLocator).shouldBe(Condition.visible);
     }
 
@@ -93,7 +94,7 @@ public class CheckoutPage {
     }
 
     public void clickInfoOfElement() {
-        getInfoOfElementElement().click();
+        getInfoOfElement().click();
     }
 
     public void clickShoppingCartContainer() {
