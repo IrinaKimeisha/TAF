@@ -1,9 +1,8 @@
 package services;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import groovy.xml.StreamingDOMBuilder;
+
+import java.sql.*;
 
 public class DataBaseService {
 
@@ -12,6 +11,7 @@ public class DataBaseService {
     static final String USER = "postgres";
 
     Connection connection;
+    Statement statement;
 
     public DataBaseService() {
         try {
@@ -22,16 +22,53 @@ public class DataBaseService {
         }
 
         try {
-            DriverManager.getConnection(DB_URL, USER, PASS);
+            connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
             System.out.println(e.toString());
             throw new RuntimeException(e);
         }
 
-        if (connection != null ){
+        if (connection != null) {
             System.out.println("you successfully connected to DB");
         } else {
             System.out.println("что-то пошло не так");
         }
+    }
+
+    public void closeConnection() {
+        try {
+            connection.close();
+            System.out.println("connection is closed");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public Statement getStatement() {
+        if (statement == null) {
+            try {
+                statement = this.connection.createStatement();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return statement;
+    }
+
+    public void executeSQL(String sql) {
+        try {
+            getStatement().execute(sql);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public ResultSet executeQuery(String sql) {
+        try {
+            return getStatement().executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }
