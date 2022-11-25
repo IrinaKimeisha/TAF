@@ -1,6 +1,9 @@
 package dbEntities;
 
+import dbServices.CustomerService;
 import models.CustomerBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import services.DataBaseService;
 
 import java.sql.ResultSet;
@@ -8,19 +11,21 @@ import java.sql.ResultSet;
 public class CustomersTable {
     private DataBaseService dataBaseService;
 
+    Logger logger = LoggerFactory.getLogger(CustomersTable.class);
+
     public CustomersTable(DataBaseService dataBaseService) {
         this.dataBaseService = dataBaseService;
     }
 
     public void dropTable() {
-        System.out.println("Удаляем customers таблицу");
+        logger.trace("Удаляем customers таблицу");
         String dropTableCustomersSQL = "DROP TABLE Customers;";
 
         dataBaseService.executeSQL(dropTableCustomersSQL);
     }
 
     public void createCustomersTable() {
-        System.out.println("Создаем customers таблицу");
+        logger.info("Создаем customers таблицу");
 
         String createTableSQL = "CREATE TABLE Customers (" +
                 "ID SERIAL PRIMARY KEY, " +

@@ -1,6 +1,8 @@
 package services;
 
 import groovy.xml.StreamingDOMBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
@@ -9,6 +11,8 @@ public class DataBaseService {
     static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
     static final String PASS = "gazette7";
     static final String USER = "postgres";
+
+    Logger logger = LoggerFactory.getLogger(DataBaseService.class);
 
     Connection connection;
     Statement statement;
@@ -24,14 +28,13 @@ public class DataBaseService {
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException e) {
-            System.out.println(e.toString());
-            throw new RuntimeException(e);
+            logger.error(e.getMessage());
         }
 
         if (connection != null) {
-            System.out.println("you successfully connected to DB");
+            logger.warn("you successfully connected to DB");
         } else {
-            System.out.println("что-то пошло не так");
+            logger.warn("что-то пошло не так");
         }
     }
 
@@ -59,7 +62,7 @@ public class DataBaseService {
         try {
             getStatement().execute(sql);
         } catch (SQLException e) {
-            System.out.println(e);
+            logger.error(e.toString());
         }
     }
 
