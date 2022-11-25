@@ -22,4 +22,5 @@ public class CustomerService {
     public List<Customer> findAllUsers() {
         return customerDao.findAll();
     }
+
 }

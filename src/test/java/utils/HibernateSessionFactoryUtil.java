@@ -7,9 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
-    private HibernateSessionFactoryUtil(){
-
-    }
+    private HibernateSessionFactoryUtil(){}
     public static SessionFactory getSessionFactory(){
         if (sessionFactory == null) {
             try {
@@ -26,6 +24,5 @@ public class HibernateSessionFactoryUtil {
             }
         }
         return sessionFactory;
-
     }
 }
