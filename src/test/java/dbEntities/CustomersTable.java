@@ -36,7 +36,8 @@ public class CustomersTable {
     public void addCustomer(CustomerBuilder customer) {
         String insertTableSQL = "INSERT INTO public.Customers(" +
                 "firstname, lastname, email, age)" +
-                "VALUES ('" + customer.getFirstName() + "', '" + customer.getLastName() + "', '" + customer.getEmail() + "', " + customer.getAge() + ");";
+                "VALUES ('" + customer.getFirstName() + "', '" + customer.getLastName() + "', '" +
+                customer.getEmail() + "', " + customer.getAge() + ");";
         dataBaseService.executeSQL(insertTableSQL);
     }
 

@@ -24,22 +24,22 @@ public class Customer {
     @Column(name = "Age")
     public Integer age;
 
-    public Customer(){
+    public Customer(String firstname, String lastName, String email, int age){
 
     }
 
-    public Customer(int id, String firstname, String firstname1, String email, Integer age) {
-        this.id = id;
-        this.lastName = firstname;
-        this.firstname = firstname1;
+    public Customer(String firstName, String lastName, String email, Integer age) {
+        this.firstname = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.age = age;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Customer)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return Objects.equals(firstname, customer.firstname) && Objects.equals(lastName, customer.lastName) && Objects.equals(email, customer.email) && Objects.equals(age, customer.age);
     }

@@ -28,12 +28,11 @@ public class CustomerDao {
     public void delete(Customer user) {
 
     }
-    public void findAll() {
+    public List<Customer> findAll() {
         List<Customer> customerList = HibernateSessionFactoryUtil.getSessionFactory()
                 .openSession()
                 .createQuery("From Customer").list();
 
-
+        return customerList;
     }
-
 }

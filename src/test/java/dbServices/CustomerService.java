@@ -3,6 +3,8 @@ package dbServices;
 import dao.CustomerDao;
 import models.Customer;
 
+import java.util.List;
+
 public class CustomerService {
     private CustomerDao customerDao = new CustomerDao();
 
@@ -13,7 +15,11 @@ public class CustomerService {
         return customerDao.findById(id);
     }
 
-    public Customer saveUser(Customer customer) {
+    public void saveUser(Customer customer) {
         customerDao.save(customer);
+    }
+
+    public List<Customer> findAllUsers() {
+        return customerDao.findAll();
     }
 }

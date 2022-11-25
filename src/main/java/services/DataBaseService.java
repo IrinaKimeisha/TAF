@@ -55,7 +55,7 @@ public class DataBaseService {
         return statement;
     }
 
-    public void executeSQL(String sql) {
+    public void executeSQL(String sql) { //insert, update,delete т к они не возвращают значения, а только true/false
         try {
             getStatement().execute(sql);
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class DataBaseService {
         }
     }
 
-    public ResultSet executeQuery(String sql) {
+    public ResultSet executeQuery(String sql) { // select, должен вернуть Result set, множество результатов
         try {
             return getStatement().executeQuery(sql);
         } catch (SQLException e) {

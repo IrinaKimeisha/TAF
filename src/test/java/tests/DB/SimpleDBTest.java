@@ -24,6 +24,7 @@ public class SimpleDBTest extends BaseApiTest {
                 .email("iv@mail.com")
                 .age(32)
                 .build());
+
         customersTable.addCustomer(CustomerBuilder.builder()
                 .firstName("Petr")
                 .lastName("Petrov")
@@ -45,6 +46,11 @@ public class SimpleDBTest extends BaseApiTest {
                 String firstName = rs.getString("firstname");
                 String lastName = rs.getString("Lastname");
                 int age = rs.getInt("age");
+
+                System.out.println(userid);
+                System.out.println(firstName);
+                System.out.println(lastName);
+                System.out.println(age);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,6 +68,5 @@ public class SimpleDBTest extends BaseApiTest {
         for (Customer user : customerList) {
             System.out.println(user.toString());
         }
-
     }
 }
