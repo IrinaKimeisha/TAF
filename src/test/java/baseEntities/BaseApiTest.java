@@ -13,8 +13,11 @@ public class BaseApiTest {
 
     @BeforeTest
     public void setUpApi() {
-        RestAssured.baseURI = "https://aqa2102.testrail.io";
+        //настройка базового uri
+        RestAssured.baseURI = "https://aqa21022.testrail.io";
 
+        //Настройка авторизации на сайт, бывает базовая и примитивная базовая, пробовать их, какая-то да подойдет ☺
+        //не забывать про content_type!, некотрые сайты просят
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
                 .auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
