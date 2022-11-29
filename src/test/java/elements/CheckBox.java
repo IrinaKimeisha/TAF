@@ -27,6 +27,4 @@ public class CheckBox {
             uiElement.click();
         }
     }
-
-
 }

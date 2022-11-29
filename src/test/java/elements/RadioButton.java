@@ -4,35 +4,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RadioButton {
-    private UIElement uiElement;
-    private WebDriver driver;
+    private List<UIElement> uiElements;
+    private List<String> valueList;
+    private List<String> textList;
 
     public RadioButton(WebDriver driver, By by) {
-        this.uiElement = new UIElement(driver, by);
-        this.driver = driver;
-    }
+        uiElements = new ArrayList<>();
+        valueList = new ArrayList<>();
+        textList = new ArrayList<>();
 
-    public RadioButton(WebDriver driver, WebElement webElement) {
-        this.driver = driver;
-        this.uiElement = new UIElement(driver, webElement);
-    }
-
-    public void selectRadioButtonByNumber(int number) {
-        clickRadioButton(number);
-    }
-
-    private void clickRadioButton(int value) {
-        switch (value) {
-            case 1:
-                driver.findElement(By.id("suite_mode_single")).click();
-                break;
-            case 2:
-                driver.findElement(By.id("suite_mode_single_baseline")).click();
-                break;
-            case 3:
-                driver.findElement(By.id("suite_mode_multi")).click();
-                break;
+        for (WebElement webElement : driver.findElements(by)) {
+            UIElement tmpElement = new UIElement(driver, webElement);
+            uiElements.add(tmpElement);
+            valueList.add(tmpElement.getAttribute("value"));
+            textList.add(tmpElement.findElement(By.xpath("parent::*/strong")).getText());
         }
+    }
+
+    public void selectByValue(String value) {
+        uiElements.get(valueList.indexOf(value)).click();
+    }
+
+    public void selectByText(String text) {
+        uiElements.get(textList.indexOf(text)).click();
     }
 }
